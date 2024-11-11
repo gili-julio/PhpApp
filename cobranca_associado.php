@@ -86,6 +86,7 @@ if (isset($_GET['associado_id'])) {
         </table>
 
         <h3>Total Devido: R$ <?php echo number_format($total_devido, 2, ',', '.'); ?></h3>
+        <a href="index.php">Voltar</a>
     <?php else: ?>
         <p>Associado não encontrado.</p>
     <?php endif; ?>

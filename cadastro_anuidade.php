@@ -18,6 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':ano', $ano);
 
         if ($stmt->execute()) {
+            header("Location: index.php");
             echo "Anuidade atualizada com sucesso!";
         } else {
             echo "Erro ao atualizar a anuidade.";
@@ -30,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':valor', $valor);
 
         if ($stmt->execute()) {
+            header("Location: index.php");
             echo "Anuidade cadastrada com sucesso!";
         } else {
             echo "Erro ao cadastrar a anuidade.";
@@ -40,11 +42,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Anuidade</title>
 </head>
+
 <body>
     <h1>Cadastro de Anuidade</h1>
     <form method="POST" action="cadastro_anuidade.php">
@@ -56,5 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <input type="submit" value="Salvar">
     </form>
+    <a href="index.php">Cancelar</a>
 </body>
+
 </html>

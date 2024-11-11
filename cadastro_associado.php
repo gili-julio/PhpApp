@@ -22,6 +22,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Executa o SQL e verifica se a inserção foi bem-sucedida
     if ($stmt->execute()) {
+        // Redireciona de volta para a página inicial
+        header("Location: index.php");
         echo "Associado cadastrado com sucesso!";
     } else {
         echo "Erro ao cadastrar o associado.";
@@ -53,5 +55,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <input type="submit" value="Cadastrar">
     </form>
+    <a href="index.php">Cancelar</a>
 </body>
 </html>
