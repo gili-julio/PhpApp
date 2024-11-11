@@ -1,8 +1,6 @@
 -- Criação do banco de dados
 CREATE DATABASE devs_do_rn;
 
-\c devs_do_rn;
-
 -- Tabela de associados
 CREATE TABLE associados (
     id SERIAL PRIMARY KEY,
