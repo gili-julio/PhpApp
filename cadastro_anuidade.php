@@ -47,20 +47,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Anuidade</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 <body>
-    <h1>Cadastro de Anuidade</h1>
-    <form method="POST" action="cadastro_anuidade.php">
-        <label for="ano">Ano:</label><br>
-        <input type="number" id="ano" name="ano" required><br><br>
 
-        <label for="valor">Valor (R$):</label><br>
-        <input type="number" id="valor" name="valor" step="0.01" required><br><br>
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <h1>Cadastro de Anuidade</h1>
+            <form method="POST" action="cadastro_anuidade.php">
+                <label class="form-label" for="ano">Ano:</label>
+                <input class="form-control" type="number" id="ano" name="ano" required>
+        
+                <label class="form-label" for="valor">Valor (R$):</label>
+                <input class="form-control mb-3" type="number" id="valor" name="valor" step="0.01" required>
+        
+                <a class="btn btn-danger" href="listar_anuidades.php">Cancelar</a>
+                <input class="btn btn-success" type="submit" value="Salvar">
+            </form>
+        </div>
+    </div>
 
-        <input type="submit" value="Salvar">
-    </form>
-    <a href="index.php">Cancelar</a>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>

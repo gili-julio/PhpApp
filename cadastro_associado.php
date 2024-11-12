@@ -37,24 +37,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Associado</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Cadastro de Associado</h1>
-    <form method="POST" action="cadastro_associado.php">
-        <label for="nome">Nome:</label><br>
-        <input type="text" id="nome" name="nome" required><br><br>
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <h1>Cadastro de Associado</h1>
+            <form method="POST" action="cadastro_associado.php">
+                <label class="form-label" for="nome">Nome:</label><br>
+                <input class="form-control" type="text" id="nome" name="nome" required>
+        
+                <label class="form-label" for="email">E-mail:</label><br>
+                <input class="form-control" type="email" id="email" name="email" required>
+        
+                <label class="form-label" for="cpf">CPF:</label><br>
+                <input class="form-control" type="text" id="cpf" name="cpf" required>
+        
+                <label class="form-label" for="data_filiacao">Data de Filiação:</label><br>
+                <input class="form-control mb-3" type="date" id="data_filiacao" name="data_filiacao" required>
+        
+                <a class="btn btn-danger" href="index.php">Cancelar</a>
+                <input class="btn btn-success" type="submit" value="Cadastrar">
+            </form>
+        </div>
+    </div>
 
-        <label for="email">E-mail:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
-
-        <label for="cpf">CPF:</label><br>
-        <input type="text" id="cpf" name="cpf" required><br><br>
-
-        <label for="data_filiacao">Data de Filiação:</label><br>
-        <input type="date" id="data_filiacao" name="data_filiacao" required><br><br>
-
-        <input type="submit" value="Cadastrar">
-    </form>
-    <a href="index.php">Cancelar</a>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

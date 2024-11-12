@@ -47,48 +47,50 @@ if (isset($_GET['associado_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cobrança de Anuidades</title>
+    <title>Associado <?php echo $associado['nome'] ?></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Cobrança de Anuidades</h1>
-
-    <?php if (isset($associado)): ?>
-        <h2>Associado: <?php echo htmlspecialchars($associado['nome']); ?></h2>
-        <p>E-mail: <?php echo htmlspecialchars($associado['email']); ?></p>
-        <p>Data de Filiação: <?php echo htmlspecialchars($associado['data_filiacao']); ?></p>
-
-        <h3>Anuidades Devidas</h3>
-        <table border="1">
-            <tr>
-                <th>Ano</th>
-                <th>Valor (R$)</th>
-                <th>Status</th>
-                <th>Ação</th>
-            </tr>
-            <?php foreach ($anuidades as $anuidade): ?>
-                <tr>
-                    <td><?php echo $anuidade['ano']; ?></td>
-                    <td><?php echo number_format($anuidade['valor'], 2, ',', '.'); ?></td>
-                    <td><?php echo $anuidade['pago'] ? 'Paga' : 'Pendente'; ?></td>
-                    <td>
-                        <?php if (!$anuidade['pago']): ?>
-                            <form method="POST" action="pagar_anuidade.php" style="display:inline;">
-                                <input type="hidden" name="associado_id" value="<?php echo $associado_id; ?>">
-                                <input type="hidden" name="anuidade_id" value="<?php echo $anuidade['anuidade_id']; ?>">
-                                <button type="submit">Pagar</button>
-                            </form>
-                        <?php else: ?>
-                            -
-                        <?php endif; ?>
-                    </td>
+    <div class="container">
+        <?php if (isset($associado)): ?>
+            <h2>Associado: <?php echo htmlspecialchars($associado['nome']); ?></h2>
+            <p>E-mail: <?php echo htmlspecialchars($associado['email']); ?></p>
+            <p>Data de Filiação: <?php echo htmlspecialchars($associado['data_filiacao']); ?></p>
+    
+            <h3>Anuidades Pendentes</h3>
+            <table class="table table-bordered table-striped" border="1">
+                <tr class="table-dark">
+                    <th>Ano</th>
+                    <th>Valor (R$)</th>
+                    <th>Status</th>
+                    <th>Ação</th>
                 </tr>
-            <?php endforeach; ?>
-        </table>
+                <?php foreach ($anuidades as $anuidade): ?>
+                    <tr>
+                        <td><?php echo $anuidade['ano']; ?></td>
+                        <td><?php echo number_format($anuidade['valor'], 2, ',', '.'); ?></td>
+                        <td class="<?php echo $anuidade['pago'] ? 'text-success' : 'text-danger'; ?>"><?php echo $anuidade['pago'] ? 'Paga' : 'Pendente'; ?></td>
+                        <td>
+                            <?php if (!$anuidade['pago']): ?>
+                                <form method="POST" action="pagar_anuidade.php" style="display:inline;">
+                                    <input type="hidden" name="associado_id" value="<?php echo $associado_id; ?>">
+                                    <input type="hidden" name="anuidade_id" value="<?php echo $anuidade['anuidade_id']; ?>">
+                                    <button class="btn btn-success" type="submit">Pagar</button>
+                                </form>
+                            <?php else: ?>
+                                -
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+    
+            <h3>Total Pendente: R$ <?php echo number_format($total_devido, 2, ',', '.'); ?></h3>
+            <a class="btn btn-danger" href="index.php">Voltar</a>
+        <?php else: header("Location: index.php");?>
+        <?php endif; ?>
+    </div>
 
-        <h3>Total Devido: R$ <?php echo number_format($total_devido, 2, ',', '.'); ?></h3>
-        <a href="index.php">Voltar</a>
-    <?php else: ?>
-        <p>Associado não encontrado.</p>
-    <?php endif; ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
