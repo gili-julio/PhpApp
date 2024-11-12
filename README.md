@@ -1,12 +1,3 @@
-# Gerenciamento de Associados
-Um software para facilitar a gerência dos associados e suas anuidades.
-
-## Como usar
-Primeiramente,
-
-Agora, clone o repositório:
-- `git clone ...`
-
 # Sistema de Gerenciamento de Associação - Devs do RN
 
 Este é um sistema simples de gerenciamento de associados para a associação Devs do RN. O sistema permite o cadastro de associados e anuidades, a cobrança e o pagamento das anuidades, além de identificação de associados com pagamento em dia ou em atraso. 
